@@ -1,0 +1,659 @@
+{
+	"info": {
+		"_postman_id": "459646f1-6154-4fd2-b1f9-6f781bfed6d5",
+		"name": "Recruitment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18583826"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"email\": \"soumik.ahammed.9@gmail.com\",\n    \"password\": \"abcabc\",\n    \"role\": \"employer\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}auth/signup",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"email\": \"soumik.ahammed.11@gmail.com\",\n    \"password\": \"abcabc\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}auth/signin",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"signin"
+							],
+							"query": [
+								{
+									"key": "data",
+									"value": "{\n    \"email\": \"soumik.ahammed.9@gmail.com\",\n    \"password\": \"abcabc\"",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{EMPLOYER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}auth/profile",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AdminAuth",
+			"item": [
+				{
+					"name": "Signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"abcabc\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}admin-auth/signin",
+							"host": [
+								"{{URL}}admin-auth"
+							],
+							"path": [
+								"signin"
+							],
+							"query": [
+								{
+									"key": "data",
+									"value": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"abcabc\"}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile Admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"email\": \"soumik.ahammed.11@gmail.com\",\n    \"password\": \"abcabc\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}admin-auth/profile",
+							"host": [
+								"{{URL}}admin-auth"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employer",
+			"item": [
+				{
+					"name": "Get employer by logged",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{EMPLOYER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}employer/by-requester",
+							"host": [
+								"{{URL}}employer"
+							],
+							"path": [
+								"by-requester"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employer",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{EMPLOYER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "coverPhoto",
+									"type": "file",
+									"src": "/E:/Work Pics/74701.4.jpg"
+								},
+								{
+									"key": "profilePhoto",
+									"type": "file",
+									"src": "/E:/Work Pics/Business-Development-Manager-Profile-Photo.jpg"
+								},
+								{
+									"key": "data",
+									"value": "{\"name\": \"Mr Employer\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}employer/update",
+							"host": [
+								"{{URL}}employer"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidate",
+			"item": [
+				{
+					"name": "Get candidate by logged",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{CANDIDATE_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}candidate/by-requester",
+							"host": [
+								"{{URL}}candidate"
+							],
+							"path": [
+								"by-requester"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Candidate",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{CANDIDATE_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"name\": \"Mr Candidate\", \"dob\":  1718607594}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}candidate/update",
+							"host": [
+								"{{URL}}candidate"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Block Unblock User",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"status\": true}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}user/block-unblock/666fc58581db438e46a4aae0",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"block-unblock",
+								"666fc58581db438e46a4aae0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employer",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"name\": \"Mr Employer\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}user/update-employer/666fc58581db438e46a4aae2",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"update-employer",
+								"666fc58581db438e46a4aae2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Candidate",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"name\": \"Mr Candidate\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}user/update-candidate/666fc5516d49c1d236ee0203",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"update-candidate",
+								"666fc5516d49c1d236ee0203"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Employers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}user/employers",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"employers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Candidates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}user/candidates",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"candidates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job",
+			"item": [
+				{
+					"name": "Post Job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{EMPLOYER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"title\": \"Software Engineer\",\n    \"description\": \"We are looking for a skilled Software Engineer to join our team.\",\n    \"category\": \"Engineering\",\n    \"type\": \"Full-time\",\n    \"tag\": \"Technology\",\n    \"gender\": \"Male\",\n    \"applyType\": \"email\",\n    \"externalUrl\": \"https://example.com/apply\",\n    \"applyEmail\": \"jobs@example.com\",\n    \"salaryType\": \"Annual\",\n    \"minSalary\": 60000,\n    \"maxSalary\": 80000,\n    \"experience\": \"2+ years of experience in software development\",\n    \"careerLevel\": \"Mid-level\",\n    \"qualification\": \"Bachelor's degree in Computer Science or related field\",\n    \"introUrl\": \"https://example.com/intro\",\n    \"deadlineDate\": 1704067200,\n    \"friendlyAddress\": \"123 Main Street, San Francisco, CA\",\n    \"contact\": {\n      \"location\": \"123 Main Street, San Francisco, CA\",\n      \"mapLocation\": \"https://maps.example.com/location\",\n      \"cordinates\": [-122.4194, 37.7749]\n    }\n  }  ",
+									"type": "text"
+								},
+								{
+									"key": "multiple",
+									"type": "file",
+									"src": [
+										"/E:/Work Pics/d.jpg",
+										"/E:/Work Pics/d2.jpg"
+									]
+								},
+								{
+									"key": "single",
+									"type": "file",
+									"src": "/E:/Work Pics/cities.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}job/create",
+							"host": [
+								"{{URL}}job"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve/Disapprove Job Admin",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"status\": true}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}job/update-job-status/66711906a55d8d51f62bc712",
+							"host": [
+								"{{URL}}job"
+							],
+							"path": [
+								"update-job-status",
+								"66711906a55d8d51f62bc712"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}job/all",
+							"host": [
+								"{{URL}}job"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all jobs for logged",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}job/all-for-logged-user",
+							"host": [
+								"{{URL}}job"
+							],
+							"path": [
+								"all-for-logged-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Apply",
+			"item": [
+				{
+					"name": "Apply To Job",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"email\": \"\", \"candidate\": \"666fc5516d49c1d236ee0203\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}apply/job/66711906a55d8d51f62bc712",
+							"host": [
+								"{{URL}}apply"
+							],
+							"path": [
+								"job",
+								"66711906a55d8d51f62bc712"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shortlist Candidate",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{EMPLOYER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"isShortlisted\": true}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}apply/shortlisted/6671202526617b62a050f86c",
+							"host": [
+								"{{URL}}apply"
+							],
+							"path": [
+								"shortlisted",
+								"6671202526617b62a050f86c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get applicant by job",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
